@@ -31,10 +31,11 @@ int main(int argc, char *argv[]){
     return -1;
   }
   int listening;
-  connected = listen(descriptor, 10);
+  listening = listen(descriptor, 10);
 
   if(listening!= 0){
-    perror("connection failed");
+    perror("listening failed");
+    return -1;
   }
 
 
