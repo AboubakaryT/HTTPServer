@@ -43,25 +43,18 @@ int main(int argc, char *argv[]){
   struct sockaddr_in client_addr;
   memset(&client_addr,0, sizeof(struct sockaddr_in));
   socklen_t client_len = sizeof(client_addr);
-
-  //intialize the connection, this creates a new socket for each connection, and removes the connection from the listeing queue.
-  int connected;
-  initConnect = accept(descriptor, (struct sockaddr *)&client_addr, &client_len);
   
-  if(connected == -1){
-    perror("Socket did not connect successfully");
-    return -1;
-  }
   int accepted;
-  //Connect to the port that we are listeing on.
+  //Connect to the port that we are listeing on. 
+  //Creates a new socket associated with our socket address.
   accepted = accept(descriptor, (struct sockaddr *)&client_addr, &client_len);
 
   if(accepted == -1){
     perror("Socket not accepted");
-    return -1
+    return -1;
   }
-
-  connect(descriptor, ip4addr.sin_addr, sizeof(ip4addr.sin_addr));
+  
+  //connect(descriptor, ip4addr.sin_addr, sizeof(ip4addr.sin_addr));
 
   return 0;
 }
